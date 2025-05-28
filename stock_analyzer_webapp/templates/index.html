@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stock Analyzer Input</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        form > div { margin-bottom: 10px; }
+        label { display: inline-block; width: 100px; }
+    </style>
+</head>
+<body>
+    <h1>Stock Analyzer</h1>
+    <form method="POST">
+        <div>
+            <label for="ticker">Ticker Symbol:</label>
+            <input type="text" id="ticker" name="ticker" required>
+        </div>
+        <div>
+            <label for="user_type">Report Type:</label>
+            <select id="user_type" name="user_type">
+                <option value="day_trader">Day Trader</option>
+                <option value="portfolio_manager">Portfolio Manager</option>
+                <option value="beginner_investor">Beginner Investor</option>
+            </select>
+        </div>
+        <div>
+            <button type="submit">Analyze</button>
+        </div>
+    </form>
+</body>
+</html>

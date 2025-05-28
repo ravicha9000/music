@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-fs8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stock Analysis Report for {{ ticker_symbol }}</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; }
+        pre { white-space: pre-wrap; word-wrap: break-word; background-color: #f4f4f4; padding: 15px; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h1>Stock Analysis Report</h1>
+    <p><strong>Ticker:</strong> {{ ticker_symbol }}</p>
+    <p><strong>Report Type:</strong> {{ user_type }}</p>
+    <hr>
+    <h2>Report:</h2>
+    <pre>{{ report_content }}</pre>
+    <hr>
+    <a href="/">New Analysis</a>
+</body>
+</html>

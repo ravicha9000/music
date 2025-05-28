@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Error</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; color: #cc0000; }
+        .error-message { background-color: #fdd; border: 1px solid #fbb; padding: 15px; border-radius: 5px;}
+    </style>
+</head>
+<body>
+    <h1>Analysis Error for {{ ticker_symbol }}</h1>
+    <div class="error-message">
+        <p>{{ error_message }}</p>
+    </div>
+    <p><a href="/">Try another analysis</a></p>
+</body>
+</html>
