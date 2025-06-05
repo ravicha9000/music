@@ -3,10 +3,21 @@ from stock_analyzer_webapp.stock_analyzer_agent.agent import data_collection
 from stock_analyzer_webapp.stock_analyzer_agent.agent import technical_analysis
 from stock_analyzer_webapp.stock_analyzer_agent.agent import reporting
 from stock_analyzer_webapp.stock_analyzer_agent.agent import fundamental_analysis # Added for fundamental data
+from stock_analyzer_webapp.stock_analyzer_agent.agent.ai_service import get_ai_response
 from datetime import datetime
 import pandas as pd
+import logging
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(threadName)s - %(message)s')
 
 app = Flask(__name__)
+
+# Example: You might want to ensure Flask's logger uses your basicConfig settings
+# if not app.debug: # Only if not in debug mode, as debug often has its own config
+#     app.logger.handlers = logging.getLogger().handlers
+#     app.logger.setLevel(logging.getLogger().level)
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -117,5 +128,20 @@ def analyze_stock(user_type, ticker_symbol):
     
     return render_template('report.html', ticker_symbol=ticker_symbol, user_type=user_type, report_content=report)
 
+@app.route('/chat', methods=['POST'])
+def chat_with_ai():
+    user_query = request.form.get('query')
+    if not user_query:
+        app.logger.error("Chat query was missing from the request.")
+        return "No query provided.", 400
+
+    app.logger.info(f"Received chat query: '{user_query}'")
+    ai_response_text = get_ai_response(user_query)
+    app.logger.info(f"Sending AI response: '{ai_response_text}'")
+    return ai_response_text
+
 if __name__ == '__main__':
+    # Note: When running with 'flask run', logging configuration might behave differently
+    # than with 'python app.py'. For production, a WSGI server like Gunicorn is typical
+    # and logging is often configured there or via Flask app settings.
     app.run(debug=True, host='0.0.0.0', port=5000)

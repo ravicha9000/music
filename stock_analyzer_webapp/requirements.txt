@@ -2,3 +2,6 @@ Flask>=2.0
 yfinance>=0.2.0
 pandas>=1.3
 numpy>=1.20
+Flask-Sockets
+Flask-SQLAlchemy
+gevent # Often used with Flask-Sockets for the WebSocket server
