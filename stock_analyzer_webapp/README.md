@@ -35,6 +35,26 @@ This web application provides analysis reports for stock tickers using the Stock
 *   Click "Analyze".
 *   The application will display the generated report.
 
+## AI Chatbot Feature (Basic Implementation)
+
+A new AI Chatbot feature has been added to the application. This is a basic implementation and serves as a foundation for future interactive AI capabilities.
+
+### How to Use
+1.  Navigate to the main page of the application (/).
+2.  Below the stock analysis form, you will find an "AI Chat" section.
+3.  Type your query into the input box labeled "Ask the AI...".
+4.  Click the "Send" button or press Enter.
+5.  The AI's response will appear in the chat area above the input box.
+
+### Current Capabilities
+*   The chat interface allows for sending messages to a backend AI service.
+*   Currently, the AI responses are placeholders (e.g., "This is a placeholder AI response. You asked: [your query]").
+*   The chat messages are logged by the server.
+
+### Running Notes
+*   The application can still be run using the Docker instructions provided (`docker build` and `docker run`) or directly with `flask run` (after installing requirements from `requirements.txt` in a virtual environment).
+*   While `Flask-Sockets` and `gevent` have been added to dependencies for future WebSocket integration, the current HTTP-based chat does not require a special server setup beyond what Flask's development server provides. Full WebSocket functionality will require running the app with a gevent-compatible server.
+
 ## Project Structure
 
 *   `Dockerfile`: Defines the Docker container for the application.
